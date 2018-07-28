@@ -4,33 +4,339 @@ use IEEE.NUMERIC_STD_UNSIGNED.all;
 
 entity eprom is
   port(
-    address: in STD_LOGIC_VECTOR(5 downto 0);
-    value: out STD_LOGIC_VECTOR(24 downto 0)
+    currentState: in STD_LOGIC_VECTOR(3 downto 0);
+    start: in STD_LOGIC;
+    sc: in STD_LOGIC;
+    b1: out STD_LOGIC_VECTOR(1 downto 0);
+    b2: out STD_LOGIC_VECTOR(1 downto 0);
+    b3: out STD_LOGIC_VECTOR(1 downto 0);
+    b4: out STD_LOGIC_VECTOR(1 downto 0);
+    b5: out STD_LOGIC;
+    b6: out STD_LOGIC;
+    b7: out STD_LOGIC_VECTOR(2 downto 0);
+    b8: out STD_LOGIC_VECTOR(1 downto 0);
+    b9: out STD_LOGIC;
+    b10: out STD_LOGIC_VECTOR(1 downto 0);
+    enableR1: out STD_LOGIC;
+    enableR2: out STD_LOGIC;
+    enableR3: out STD_LOGIC;
+    enableR4: out STD_LOGIC;
+    enableR5: out STD_LOGIC;
+    enableR: out STD_LOGIC;
+    done: out STD_LOGIC
   );
 end;
 
 architecture arch of divisor is
-  signal b1: STD_LOGIC_VECTOR(1 downto 0);
-  signal b2: STD_LOGIC_VECTOR(1 downto 0);
-  signal b3: STD_LOGIC_VECTOR(1 downto 0);
-  signal b4: STD_LOGIC_VECTOR(1 downto 0);
-  signal b5: STD_LOGIC;
-  signal b6: STD_LOGIC;
-  signal b7: STD_LOGIC_VECTOR(2 downto 0);
-  signal b8: STD_LOGIC_VECTOR(1 downto 0);
-  signal b9: STD_LOGIC;
-  signal b10: STD_LOGIC_VECTOR(1 downto 0);
-  signal enableR1: STD_LOGIC;
-  signal enableR2: STD_LOGIC;
-  signal enableR3: STD_LOGIC;
-  signal enableR4: STD_LOGIC;
-  signal enableR5: STD_LOGIC;
-  signal enableR: STD_LOGIC;
-  signal done: STD_LOGIC;
 begin
   process(all) begin
-    case address is
-      when "000000" =>
+    case currentState is
+      when "0000" =>
+        if start = '0' then
+          b1 <= "00";
+          b2 <= "00";
+          b3 <= "00";
+          b4 <= "00";
+          b5 <= '0';
+          b6 <= '0';
+          b7 <= "000";
+          b8 <= "00";
+          b9 <= '0';
+          b10 <= "00";
+          enableR1 <= '0';
+          enableR2 <= '0';
+          enableR3 <= '0';
+          enableR4 <= '0';
+          enableR5 <= '0';
+          enableR <= '0';
+          done <= '0';
+        else
+          b1 <= "00";
+          b2 <= "00";
+          b3 <= "00";
+          b4 <= "00";
+          b5 <= '0';
+          b6 <= '0';
+          b7 <= "010";
+          b8 <= "00";
+          b9 <= '0';
+          b10 <= "00";
+          enableR1 <= '1';
+          enableR2 <= '0';
+          enableR3 <= '0';
+          enableR4 <= '0';
+          enableR5 <= '0';
+          enableR <= '0';
+          done <= '0';
+        end if;
+
+      when "0001" =>
+        b1 <= "00";
+        b2 <= "00";
+        b3 <= "00";
+        b4 <= "00";
+        b5 <= '0';
+        b6 <= '0';
+        b7 <= "100";
+        b8 <= "00";
+        b9 <= '0';
+        b10 <= "00";
+        enableR1 <= '0';
+        enableR2 <= '1';
+        enableR3 <= '0';
+        enableR4 <= '0';
+        enableR5 <= '0';
+        enableR <= '0';
+        done <= '0';
+      
+      when "0010" =>
+        b1 <= "01";
+        b2 <= "00";
+        b3 <= "00";
+        b4 <= "00";
+        b5 <= '0';
+        b6 <= '0';
+        b7 <= "101";
+        b8 <= "00";
+        b9 <= '1';
+        b10 <= "00";
+        enableR1 <= '0';
+        enableR2 <= '0';
+        enableR3 <= '1';
+        enableR4 <= '1';
+        enableR5 <= '0';
+        enableR <= '0';
+        done <= '0';
+    
+      when "0011" =>
+        b1 <= "01";
+        b2 <= "10";
+        b3 <= "01";
+        b4 <= "10";
+        b5 <= '0';
+        b6 <= '0';
+        b7 <= "000";
+        b8 <= "11";
+        b9 <= '0';
+        b10 <= "00";
+        enableR1 <= '0';
+        enableR2 <= '0';
+        enableR3 <= '1';
+        enableR4 <= '1';
+        enableR5 <= '1';
+        enableR <= '0';
+        done <= '0';
+
+      when "0100" =>
+        b1 <= "01";
+        b2 <= "11";
+        b3 <= "10";
+        b4 <= "11";
+        b5 <= '0';
+        b6 <= '1';
+        b7 <= "000";
+        b8 <= "00";
+        b9 <= '1';
+        b10 <= "01";
+        enableR1 <= '1';
+        enableR2 <= '1';
+        enableR3 <= '1';
+        enableR4 <= '1';
+        enableR5 <= '0';
+        enableR <= '0';
+        done <= '0';
+      
+      when "0101" =>
+        b1 <= "00";
+        b2 <= "01";
+        b3 <= "01";
+        b4 <= "10";
+        b5 <= '0';
+        b6 <= '0';
+        b7 <= "011";
+        b8 <= "00";
+        b9 <= '0';
+        b10 <= "00";
+        enableR1 <= '1';
+        enableR2 <= '1';
+        enableR3 <= '0';
+        enableR4 <= '0';
+        enableR5 <= '0';
+        enableR <= '0';
+        done <= '0';
+
+      when "0110" =>
+        b1 <= "00";
+        b2 <= "00";
+        b3 <= "00";
+        b4 <= "00";
+        b5 <= '0';
+        b6 <= '0';
+        b7 <= "000";
+        b8 <= "00";
+        b9 <= '0';
+        b10 <= "00";
+        enableR1 <= '1';
+        enableR2 <= '0';
+        enableR3 <= '0';
+        enableR4 <= '0';
+        enableR5 <= '0';
+        enableR <= '0';
+        done <= '0';
+
+      when "0111" =>
+        b1 <= "00";
+        b2 <= "00";
+        b3 <= "00";
+        b4 <= "00";
+        b5 <= '0';
+        b6 <= '0';
+        b7 <= "000";
+        b8 <= "00";
+        b9 <= '0';
+        b10 <= "00";
+        enableR1 <= '0';
+        enableR2 <= '0';
+        enableR3 <= '0';
+        enableR4 <= '0';
+        enableR5 <= '0';
+        enableR <= '1';
+        done <= '1';
+
+      when "1000" =>
+        b1 <= "00";
+        b2 <= "00";
+        b3 <= "00";
+        b4 <= "00";
+        b5 <= '0';
+        b6 <= '0';
+        b7 <= "100";
+        b8 <= "10";
+        b9 <= '0';
+        b10 <= "00";
+        enableR1 <= '1';
+        enableR2 <= '1';
+        enableR3 <= '0';
+        enableR4 <= '0';
+        enableR5 <= '0';
+        enableR <= '0';
+        done <= '0';
+
+      when "1001" =>
+        b1 <= "00";
+        b2 <= "00";
+        b3 <= "00";
+        b4 <= "01";
+        b5 <= '0';
+        b6 <= '0';
+        b7 <= "110";
+        b8 <= "00";
+        b9 <= '1';
+        b10 <= "10";
+        enableR1 <= '0';
+        enableR2 <= '1';
+        enableR3 <= '1';
+        enableR4 <= '1';
+        enableR5 <= '1';
+        enableR <= '0';
+        done <= '0';
+
+      when "1010" =>
+        b1 <= "00";
+        b2 <= "10";
+        b3 <= "01";
+        b4 <= "11";
+        b5 <= '1';
+        b6 <= '0';
+        b7 <= "001";
+        b8 <= "01";
+        b9 <= '0';
+        b10 <= "00";
+        enableR1 <= '1';
+        enableR2 <= '1';
+        enableR3 <= '1';
+        enableR4 <= '1';
+        enableR5 <= '0';
+        enableR <= '0';
+        done <= '0';
+        
+      when "1011" =>
+        b1 <= "10";
+        b2 <= "01";
+        b3 <= "10";
+        b4 <= "00";
+        b5 <= '0';
+        b6 <= '0';
+        b7 <= "011";
+        b8 <= "00";
+        b9 <= '0';
+        b10 <= "00";
+        enableR1 <= '1';
+        enableR2 <= '1';
+        enableR3 <= '0';
+        enableR4 <= '0';
+        enableR5 <= '0';
+        enableR <= '0';
+        done <= '0';
+
+      when "1100" =>
+        b1 <= "00";
+        b2 <= "00";
+        b3 <= "00";
+        b4 <= "00";
+        b5 <= '0';
+        b6 <= '0';
+        b7 <= "000";
+        b8 <= "00";
+        b9 <= '0';
+        b10 <= "00";
+        enableR1 <= '1';
+        enableR2 <= '0';
+        enableR3 <= '0';
+        enableR4 <= '0';
+        enableR5 <= '0';
+        enableR <= '0';
+        done <= '0';
+
+      when "1101" =>
+        b1 <= "00";
+        b2 <= "00";
+        b3 <= "00";
+        b4 <= "00";
+        b5 <= '0';
+        b6 <= '0';
+        b7 <= "000";
+        b8 <= "00";
+        b9 <= '0';
+        b10 <= "00";
+        enableR1 <= '0';
+        enableR2 <= '0';
+        enableR3 <= '0';
+        enableR4 <= '0';
+        enableR5 <= '0';
+        enableR <= '0';
+        done <= '0';
+
+      when "1110" =>
+        b1 <= "00";
+        b2 <= "00";
+        b3 <= "00";
+        b4 <= "00";
+        b5 <= '0';
+        b6 <= '0';
+        b7 <= "000";
+        b8 <= "00";
+        b9 <= '0';
+        b10 <= "00";
+        enableR1 <= '0';
+        enableR2 <= '0';
+        enableR3 <= '0';
+        enableR4 <= '0';
+        enableR5 <= '0';
+        enableR <= '0';
+        done <= '0';
+
+      when "1111" =>
         b1 <= "00";
         b2 <= "00";
         b3 <= "00";
@@ -49,7 +355,5 @@ begin
         enableR <= '0';
         done <= '0';
     end case;
-
-    value <= b1 & b2 & b3 & b4 & b5 & b6 & b7 & b8 & b9 & b10 & enableR1 & enableR2 & enableR3 & enableR4 & enableR5 & enableR & done;
   end process;
 end;
