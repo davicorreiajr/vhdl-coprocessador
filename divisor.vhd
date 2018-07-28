@@ -11,7 +11,7 @@ entity divisor is
 end divisor;
 
 architecture arch of divisor is
-  type float32 is float(18 downto -13);
+  type float32 is float(19 downto -12);
   signal numerator_float: float32;
   signal denominator_float: float32;
 begin
