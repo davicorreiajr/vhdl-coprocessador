@@ -11,11 +11,11 @@ entity divisor is
 end divisor;
 
 architecture arch of divisor is
-  subtype float32 is float(18 downto -13);
+  type float32 is float(18 downto -13);
   signal numerator_float: float32;
   signal denominator_float: float32;
 begin
   numerator_float <= to_float(numerator, numerator_float);
   denominator_float <= to_float(denominator, denominator_float);
-  result <= numerator_float / denominator_float;
+  result <= to_std_logic_vector(numerator_float / denominator_float);
 end;
