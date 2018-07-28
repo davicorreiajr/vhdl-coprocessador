@@ -130,6 +130,4 @@ begin
     "1100" when S12,
     "1101" when S13;
 
-
-
-end unitControl;
+end;
