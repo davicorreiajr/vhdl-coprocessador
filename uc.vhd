@@ -27,7 +27,7 @@ entity unitControl is
   );
 end unitControl;
 
-architecture unitControl of ent is
+architecture unitControl of unitControl is
 
   component eprom
     port(
