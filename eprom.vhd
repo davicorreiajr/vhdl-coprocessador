@@ -27,7 +27,7 @@ entity eprom is
   );
 end;
 
-architecture arch of divisor is
+architecture arch of eprom is
 begin
   process(all) begin
     case currentState is
