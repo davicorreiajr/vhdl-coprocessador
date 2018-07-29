@@ -5,7 +5,7 @@ use IEEE.NUMERIC_STD_UNSIGNED.all;
 entity testbenchEprom is
 end;
 
-architecture testbenchEprom of testbenchEprom is
+architecture test of testbenchEprom is
   component eprom
     port(
       currentState: in STD_LOGIC_VECTOR(3 downto 0);
@@ -47,6 +47,7 @@ architecture testbenchEprom of testbenchEprom is
   signal sEnableR5: STD_LOGIC;
   signal sEnableR: STD_LOGIC;
   signal sDone: STD_LOGIC;
+  signal clk: STD_LOGIC;
 begin
 
   eprom1: eprom port map(
@@ -56,31 +57,41 @@ begin
     sEnableR, sDone
   );
 
+  -- Generate clock with 10 ns period
   process begin
-    if(
-      sB1 = "00" and
-      sB2 = "10" and
-      sB3 = "01" and
-      sB4 = "11" and
-      sB4 = "11" and
-      sB5 = '1' and
-      sB6 = '0' and
-      sB7 = "001" and
-      sB8 = "01" and
-      sB9 = '0' and
-      sB10 = "00" and
-      sEnableR1 = '1' and
-      sEnableR2 = '1' and
-      sEnableR3 = '1' and
-      sEnableR4 = '1' and
-      sEnableR5 = '0' and
-      sEnableR = '0' and
-      sDone = '0'
-    )
+    clk <= '1';
+    wait for 5 ns; 
+    clk <= '0';
+    wait for 5 ns;
+  end process;
+
+  process(clk) begin
+    if(rising_edge(clk))
     then
-      report "NO ERRORS: Simulation succeeded" severity failure;
-    else
-      report "Simulation failed" severity failure;
+      if(
+        sB1 = "00" and
+        sB2 = "10" and
+        sB3 = "01" and
+        sB4 = "11" and
+        sB5 = '1' and
+        sB6 = '0' and
+        sB7 = "001" and
+        sB8 = "01" and
+        sB9 = '0' and
+        sB10 = "00" and
+        sEnableR1 = '1' and
+        sEnableR2 = '1' and
+        sEnableR3 = '1' and
+        sEnableR4 = '1' and
+        sEnableR5 = '0' and
+        sEnableR = '0' and
+        sDone = '0'
+      )
+      then
+        report "NO ERRORS: Simulation succeeded" severity failure;
+      else
+        report "Simulation failed" severity failure;
+      end if;
     end if;
   end process;
 end;
