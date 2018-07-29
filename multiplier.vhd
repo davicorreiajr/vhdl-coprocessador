@@ -1,5 +1,7 @@
-library IEEE;
-use IEEE.std_logic_1164.all;
+library ieee;
+use ieee.std_logic_1164.all;
+library ieee_proposed;
+use ieee_proposed.fixed_pkg.all;
 
 entity multiplier is
   port (
@@ -9,11 +11,11 @@ entity multiplier is
 end multiplier;
 
 architecture multiplier of multiplier is
-  type float32 is float(19 downto -12);
-  signal multiplier_float: float32;
-  signal multiplicand_float: float32;
+  type fixed is sfixed(19 downto -12);
+  signal multiplier_fixed: fixed;
+  signal multiplicand_fixed: fixed;
 begin
-  multiplier_float <= to_float(multiplier, multiplier_float);
-  multiplicand_float <= to_float(multiplicand, multiplicand_float);
-  result <= to_std_logic_vector(multiplier_float * multiplicand_float);
+  multiplier_fixed <= to_sfixed(multiplier, multiplier_fixed);
+  multiplicand_fixed <= to_sfixed(multiplicand, multiplicand_fixed);
+  result <= to_slv(multiplier_fixed * multiplicand_fixed);
 end;
