@@ -12,7 +12,7 @@ architecture test of testbenchDivisor is
       result: out STD_LOGIC_VECTOR(31 downto 0)
     );
   end component;
-  signal sResult: STD_LOGIC_VECTOR(31 downto 0)
+  signal sResult: STD_LOGIC_VECTOR(31 downto 0);
   signal clk: STD_LOGIC;
 begin
 
