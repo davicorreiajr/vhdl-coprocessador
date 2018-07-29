@@ -26,7 +26,7 @@ entity eprom is
   );
 end;
 
-architecture eprom of eprom is
+architecture arch2 of eprom is
 begin
   process(all) begin
     case currentState is
@@ -335,7 +335,7 @@ begin
         enableR <= '0';
         done <= '0';
 
-      when "1111" =>
+      when others =>
         b1 <= "00";
         b2 <= "00";
         b3 <= "00";
