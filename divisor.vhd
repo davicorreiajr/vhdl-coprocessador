@@ -11,9 +11,8 @@ entity divisor is
 end divisor;
 
 architecture divisor of divisor is
-  type fixed is sfixed(19 downto -12);
-  signal numerator_fixed: fixed;
-  signal denominator_fixed: fixed;
+  signal numerator_fixed: sfixed(19 downto -12);
+  signal denominator_fixed: sfixed(19 downto -12);
 begin
   numerator_fixed <= to_sfixed(numerator, numerator_fixed);
   denominator_fixed <= to_sfixed(denominator, denominator_fixed);
