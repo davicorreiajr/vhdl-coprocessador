@@ -11,7 +11,7 @@ entity bus3 is
   );
 end bus3;
 
-architecture arch of bus3 is
+architecture bus3 of bus3 is
   process(all)
   begin
     case control is

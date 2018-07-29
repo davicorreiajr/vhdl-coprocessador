@@ -10,7 +10,7 @@ entity bus2 is
   );
 end bus2;
 
-architecture arch of bus2 is
+architecture bus2 of bus2 is
   process(all)
   begin
     case control is

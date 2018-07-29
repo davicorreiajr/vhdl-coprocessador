@@ -8,7 +8,7 @@ entity multiplier is
   );
 end multiplier;
 
-architecture arch of multiplier is
+architecture multiplier of multiplier is
   type float32 is float(19 downto -12);
   signal multiplier_float: float32;
   signal multiplicand_float: float32;

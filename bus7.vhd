@@ -15,7 +15,7 @@ entity bus7 is
   );
 end bus7;
 
-architecture arch of bus7 is
+architecture bus7 of bus7 is
   process(all)
   begin
     case control is

@@ -9,7 +9,7 @@ entity subtractor is
   );
 end;
 
-architecture behave of subtractor is
+architecture subtractor of subtractor is
 begin
   y <= a + not b + '1';
 end;

@@ -26,7 +26,7 @@ entity eprom is
   );
 end;
 
-architecture arch of eprom is
+architecture eprom of eprom is
 begin
   process(all) begin
     case currentState is

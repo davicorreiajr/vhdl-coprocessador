@@ -9,7 +9,7 @@ entity adder is
   );
 end;
 
-architecture behave of adder is
+architecture adder of adder is
 begin
   y <= a + b;
 end;

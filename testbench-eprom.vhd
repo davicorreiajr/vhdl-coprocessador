@@ -5,7 +5,7 @@ use IEEE.NUMERIC_STD_UNSIGNED.all;
 entity testbenchEprom is
 end;
 
-architecture test of testbenchEprom is
+architecture testbenchEprom of testbenchEprom is
   component eprom
     port(
       currentState: in STD_LOGIC_VECTOR(3 downto 0);
