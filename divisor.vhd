@@ -13,8 +13,10 @@ end divisor;
 architecture divisor of divisor is
   signal numerator_fixed: sfixed(19 downto -12);
   signal denominator_fixed: sfixed(19 downto -12);
+  signal sResult: sfixed(19 downto -12);
 begin
   numerator_fixed <= to_sfixed(numerator, numerator_fixed);
   denominator_fixed <= to_sfixed(denominator, denominator_fixed);
-  result <= to_slv(numerator_fixed / denominator_fixed);
+  sResult <= numerator_fixed / denominator_fixed;
+  result <= to_slv(sResult);
 end;

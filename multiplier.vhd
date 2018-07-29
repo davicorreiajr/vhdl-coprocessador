@@ -11,11 +11,12 @@ entity multiplier is
 end multiplier;
 
 architecture multiplier of multiplier is
-  type fixed is sfixed(19 downto -12);
-  signal multiplier_fixed: fixed;
-  signal multiplicand_fixed: fixed;
+  signal multiplier_fixed: sfixed(19 downto -12);
+  signal multiplicand_fixed: sfixed(19 downto -12);
+  signal sResult: sfixed(19 downto -12);
 begin
   multiplier_fixed <= to_sfixed(multiplier, multiplier_fixed);
   multiplicand_fixed <= to_sfixed(multiplicand, multiplicand_fixed);
-  result <= to_slv(multiplier_fixed * multiplicand_fixed);
+  sResult <= multiplier_fixed * multiplicand_fixed;
+  result <= to_slv(sResult);
 end;
