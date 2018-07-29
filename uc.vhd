@@ -55,12 +55,12 @@ architecture unitControl of unitControl is
   end component;
 
   type state is (S0, S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, S13);
-  signal currentState, nextState: state;
-  signal currentStateEprom: STD_LOGIC_VECTOR(3 downto 0);
+  signal sCurrentState, sNextState: state;
+  signal sCurrentStateEprom: STD_LOGIC_VECTOR(3 downto 0);
 
 begin
   eprom: eprom port map(
-    currentStateEprom,
+    sCurrentStateEprom,
     start, sc,
     b1, b2, b3, b4, b5, b6, b7, b8, b9, b10,
     enableR1, enableR2, enableR3, enableR4, enableR5,
@@ -71,9 +71,9 @@ begin
   begin
     
     if reset = '1' then
-      currentState <= S0;
+      sCurrentState <= S0;
     elsif rising_edge(clock) then
-      currentState <= nextState;
+      sCurrentState <= sNextState;
     end if;
 
   end process;
@@ -81,40 +81,40 @@ begin
   process (start, sc)
   begin
 
-    case currentState is
+    case sCurrentState is
       
       when S0 =>
         if start = '1' then
           
           if sc = '1' then
-            nextState <= S1;
+            sNextState <= S1;
           else
-            nextState <= S8;
+            sNextState <= S8;
           end if ;
         
         else
-          nextState <= S0;
+          sNextState <= S0;
         end if;
       
-      when S1 => nextState <= S2;
-      when S2 => nextState <= S3;
-      when S3 => nextState <= S4;
-      when S4 => nextState <= S5;
-      when S5 => nextState <= S6;
-      when S6 => nextState <= S7;
-      when S7 => nextState <= S0;
+      when S1 => sNextState <= S2;
+      when S2 => sNextState <= S3;
+      when S3 => sNextState <= S4;
+      when S4 => sNextState <= S5;
+      when S5 => sNextState <= S6;
+      when S6 => sNextState <= S7;
+      when S7 => sNextState <= S0;
 
-      when S8 => nextState <= S9;
-      when S9 => nextState <= S10;
-      when S10 => nextState <= S11;
-      when S11 => nextState <= S12;
-      when S12 => nextState <= S13;
-      when S13 => nextState <= S0;
+      when S8 => sNextState <= S9;
+      when S9 => sNextState <= S10;
+      when S10 => sNextState <= S11;
+      when S11 => sNextState <= S12;
+      when S12 => sNextState <= S13;
+      when S13 => sNextState <= S0;
     end case;
   end process;
 
-  with currentState select
-    currentStateEprom <=
+  with sCurrentState select
+    sCurrentStateEprom <=
     "0000" when S0,
     "0001" when S1,
     "0010" when S2,

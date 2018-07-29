@@ -4,8 +4,8 @@ use IEEE.std_logic_1164.all;
 entity register is
   port(
     clock, enable, clear: in STD_LOGIC;
-    input: in STD_LOGIC_VECTOR(31 downto 0);
-    output: out STD_LOGIC_VECTOR(31 downto 0)
+    in1: in STD_LOGIC_VECTOR(31 downto 0);
+    out1: out STD_LOGIC_VECTOR(31 downto 0)
   );
 end register;
 
@@ -15,9 +15,9 @@ begin
   begin
     if rising_edge(clock) then
       if clear = '1' then
-        output <= (others => '0');
+        out1 <= (others => '0');
       elsif enable = '1' then
-        output <= input;
+        out1 <= in1;
       end if;
     end if;
   end process;

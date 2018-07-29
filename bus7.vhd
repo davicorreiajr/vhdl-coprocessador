@@ -11,7 +11,7 @@ entity bus7 is
     in6: in STD_LOGIC_VECTOR(31 downto 0);
     in7: in STD_LOGIC_VECTOR(31 downto 0);
     control: out STD_LOGIC_VECTOR(2 downto 0);
-    output: out STD_LOGIC_VECTOR(31 downto 0)
+    out1: out STD_LOGIC_VECTOR(31 downto 0)
   );
 end bus7;
 
@@ -19,14 +19,14 @@ architecture bus7 of bus7 is
   process(all)
   begin
     case control is
-      when "000" => output <= in1;
-      when "001" => output <= in2;
-      when "010" => output <= in3;
-      when "011" => output <= in4;
-      when "100" => output <= in5;
-      when "101" => output <= in6;
-      when "110" => output <= in7;
-      when "111" => output <= (others => '0');
+      when "000" => out1 <= in1;
+      when "001" => out1 <= in2;
+      when "010" => out1 <= in3;
+      when "011" => out1 <= in4;
+      when "100" => out1 <= in5;
+      when "101" => out1 <= in6;
+      when "110" => out1 <= in7;
+      when "111" => out1 <= (others => '0');
     end case;
   end process;
 end;
