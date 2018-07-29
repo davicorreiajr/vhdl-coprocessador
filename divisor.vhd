@@ -1,7 +1,7 @@
-library IEEE;
-use IEEE.std_logic_1164.all;
-use ieee.numeric_std.all;
-use ieee.float_pkg.all;
+library ieee;
+use ieee.std_logic_1164.all;
+library ieee_proposed;
+use ieee_proposed.fixed_pkg.all;
 
 entity divisor is
   port (
@@ -11,11 +11,11 @@ entity divisor is
 end divisor;
 
 architecture divisor of divisor is
-  type float32 is float(19 downto -12);
-  signal numerator_float: float32;
-  signal denominator_float: float32;
+  type fixed is sfixed(19 downto -12);
+  signal numerator_fixed: fixed;
+  signal denominator_fixed: fixed;
 begin
-  numerator_float <= to_float(numerator, numerator_float);
-  denominator_float <= to_float(denominator, denominator_float);
-  result <= to_std_logic_vector(numerator_float / denominator_float);
+  numerator_fixed <= to_sfixed(numerator, numerator_fixed);
+  denominator_fixed <= to_sfixed(denominator, denominator_fixed);
+  result <= to_slv(numerator_fixed / denominator_fixed);
 end;
