@@ -1,16 +1,16 @@
 library IEEE; 
 use IEEE.STD_LOGIC_1164.all;
 
-entity bus2 is
+entity bus2in is
   port (
     in1: in STD_LOGIC_VECTOR(31 downto 0);
     in2: in STD_LOGIC_VECTOR(31 downto 0);
     control: out STD_LOGIC;
     out1: out STD_LOGIC_VECTOR(31 downto 0)
   );
-end bus2;
+end bus2in;
 
-architecture bus2 of bus2 is
+architecture bus2in of bus2in is
   process(all)
   begin
     case control is

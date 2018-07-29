@@ -1,7 +1,7 @@
 library IEEE; 
 use IEEE.STD_LOGIC_1164.all;
 
-entity bus4 is
+entity bus4in is
   port (
     in1: in STD_LOGIC_VECTOR(31 downto 0);
     in2: in STD_LOGIC_VECTOR(31 downto 0);
@@ -10,9 +10,9 @@ entity bus4 is
     control: out STD_LOGIC_VECTOR(1 downto 0);
     out1: out STD_LOGIC_VECTOR(31 downto 0)
   );
-end bus4;
+end bus4in;
 
-architecture bus4 of bus4 is
+architecture bus4in of bus4in is
   process(all)
   begin
     case control is
