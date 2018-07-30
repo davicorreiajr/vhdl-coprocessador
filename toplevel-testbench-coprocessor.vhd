@@ -57,12 +57,8 @@ begin
   end process;
 
   process (sClock) begin
-    if(rising_edge(sClock)) then
-      if sDone = '1' then
-        report "NO ERRORS: Simulation succeeded" severity failure;
-      else
-        report "Simulation failed" severity failure;
-      end if;
+    if(rising_edge(sClock) and sDone = '1') then
+      report "NO ERRORS: Simulation succeeded" severity failure;
     end if;
   end process;
 end;
