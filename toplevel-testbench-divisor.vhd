@@ -17,8 +17,8 @@ architecture test of testbenchDivisor is
 begin
 
   divisor1: divisor port map(
-    "00000000000000001100100000000000",
-    "00000000000000000010000000000000",
+    "01011101111111101000000000000000",
+    "00000001001110110000000000000000",
     sResult
   );
 
@@ -63,5 +63,5 @@ begin
   numerator_fixed <= to_sfixed(numerator, numerator_fixed);
   denominator_fixed <= to_sfixed(denominator, denominator_fixed);
   sResult <= numerator_fixed / denominator_fixed;
-  result <= to_slv(sResult);
+  result <= to_slv(sResult(38 downto 7));
 end;
