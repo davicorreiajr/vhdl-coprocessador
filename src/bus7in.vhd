@@ -10,7 +10,7 @@ entity bus7in is
     in5: in STD_LOGIC_VECTOR(31 downto 0);
     in6: in STD_LOGIC_VECTOR(31 downto 0);
     in7: in STD_LOGIC_VECTOR(31 downto 0);
-    control: out STD_LOGIC_VECTOR(2 downto 0);
+    control: in STD_LOGIC_VECTOR(2 downto 0);
     out1: out STD_LOGIC_VECTOR(31 downto 0)
   );
 end bus7in;

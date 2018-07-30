@@ -5,7 +5,7 @@ entity bus2in is
   port (
     in1: in STD_LOGIC_VECTOR(31 downto 0);
     in2: in STD_LOGIC_VECTOR(31 downto 0);
-    control: out STD_LOGIC;
+    control: in STD_LOGIC;
     out1: out STD_LOGIC_VECTOR(31 downto 0)
   );
 end bus2in;
