@@ -257,6 +257,17 @@ begin
 
   done <= sDone;
   r <= sR;
+
+  debugBus1 <= sDebugBus1;
+  debugBus2 <= sDebugBus2;
+  debugBus3 <= sDebugBus3;
+  debugBus4 <= sDebugBus4;
+  debugBus5 <= sDebugBus5;
+  debugBus6 <= sDebugBus6;
+  debugBus7 <= sDebugBus7;
+  debugBus8 <= sDebugBus8;
+  debugBus9 <= sDebugBus9;
+  debugBus10 <= sDebugBus10;
 end;
 
 library IEEE;
