@@ -13,6 +13,7 @@ entity bus4in is
 end bus4in;
 
 architecture bus4in of bus4in is
+begin
   process(all)
   begin
     case control is

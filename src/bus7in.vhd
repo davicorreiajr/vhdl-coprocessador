@@ -16,6 +16,7 @@ entity bus7in is
 end bus7in;
 
 architecture bus7in of bus7in is
+begin
   process(all)
   begin
     case control is

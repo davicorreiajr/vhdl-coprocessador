@@ -12,6 +12,7 @@ entity bus3in is
 end bus3in;
 
 architecture bus3in of bus3in is
+begin
   process(all)
   begin
     case control is

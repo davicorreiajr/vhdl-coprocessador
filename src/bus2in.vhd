@@ -11,6 +11,7 @@ entity bus2in is
 end bus2in;
 
 architecture bus2in of bus2in is
+begin
   process(all)
   begin
     case control is
