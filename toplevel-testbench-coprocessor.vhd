@@ -28,7 +28,7 @@ begin
 
   coprocessor1: coprocessor port map(
     "0000000000000000",
-    '0',
+    '1',
     sStart, sReset, sClock,
     sResult, sDone
   );
@@ -58,7 +58,11 @@ begin
 
   process (sClock) begin
     if(rising_edge(sClock) and sDone = '1') then
-      report "NO ERRORS: Simulation succeeded" severity failure;
+      if (sResult = "0000000000000000") then
+        report "NO ERRORS: Simulation succeeded" severity failure;
+      else
+        report "Simulation failed" severity failure;
+      end if;
     end if;
   end process;
 end;
