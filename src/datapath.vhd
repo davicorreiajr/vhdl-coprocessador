@@ -262,5 +262,5 @@ begin
     sDivisorOutput
   );
 
-  r <= sRegisterOut1;
+  r <= sBus3Out(15 downto 0);
 end;
