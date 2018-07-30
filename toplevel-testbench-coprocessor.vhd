@@ -26,7 +26,7 @@ architecture testbenchCoprocessor of testbenchCoprocessor is
       debugBus8: out STD_LOGIC_VECTOR(31 downto 0);
       debugBus9: out STD_LOGIC_VECTOR(31 downto 0);
       debugBus10: out STD_LOGIC_VECTOR(31 downto 0);
-      debugState: STD_LOGIC_VECTOR(3 downto 0)
+      debugState: out STD_LOGIC_VECTOR(3 downto 0)
     );
   end component;
 
@@ -137,7 +137,7 @@ entity coprocessor is
     debugBus8: out STD_LOGIC_VECTOR(31 downto 0);
     debugBus9: out STD_LOGIC_VECTOR(31 downto 0);
     debugBus10: out STD_LOGIC_VECTOR(31 downto 0);
-    debugState: STD_LOGIC_VECTOR(3 downto 0)
+    debugState: out STD_LOGIC_VECTOR(3 downto 0)
   );
 end coprocessor;
 
