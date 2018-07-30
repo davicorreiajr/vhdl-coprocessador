@@ -152,7 +152,7 @@ architecture coprocessor of coprocessor is
   signal sEnableR: STD_LOGIC;
 
   signal sDone: STD_LOGIC;
-  signal sR: STD_LOGIC_VECTOR(1 downto 0);
+  signal sR: STD_LOGIC_VECTOR(15 downto 0);
 begin
 
   uc1: unitControl port map(
@@ -446,7 +446,7 @@ begin
   bus7: bus7in port map(
     sSubtractorOutput,
     "00000000001011010000000000000000",
-    '0000000000000000' & x,
+    "0000000000000000" & x,
     sAdderOutput,
     sMultiplierOutput,
     "00000000000001111000000000000000",
