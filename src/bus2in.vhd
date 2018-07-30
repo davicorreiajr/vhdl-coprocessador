@@ -17,6 +17,7 @@ begin
     case control is
       when '0' => out1 <= in1;
       when '1' => out1 <= in2;
+      when others => out1 <= (others => '0');
     end case;
   end process;
 end;

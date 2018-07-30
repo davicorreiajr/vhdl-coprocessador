@@ -21,6 +21,7 @@ begin
       when "01" => out1 <= in2;
       when "10" => out1 <= in3;
       when "11" => out1 <= in4;
+      when others => out1 <= (others => '0');
     end case;
   end process;
 end;

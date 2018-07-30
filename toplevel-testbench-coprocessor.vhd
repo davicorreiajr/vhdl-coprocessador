@@ -283,6 +283,8 @@ begin
       when S11 => sNextState <= S12;
       when S12 => sNextState <= S13;
       when S13 => sNextState <= S0;
+
+      when others => sNextState <= S0;
     end case;
   end process;
 
@@ -609,6 +611,7 @@ begin
     case control is
       when '0' => out1 <= in1;
       when '1' => out1 <= in2;
+      when others => out1 <= (others => '0');
     end case;
   end process;
 end;
@@ -635,6 +638,7 @@ begin
       when "01" => out1 <= in2;
       when "10" => out1 <= in3;
       when "11" => out1 <= (others => '0');
+      when others => out1 <= (others => '0');
     end case;
   end process;
 end;
@@ -662,6 +666,7 @@ begin
       when "01" => out1 <= in2;
       when "10" => out1 <= in3;
       when "11" => out1 <= in4;
+      when others => out1 <= (others => '0');
     end case;
   end process;
 end;
@@ -696,6 +701,7 @@ begin
       when "101" => out1 <= in6;
       when "110" => out1 <= in7;
       when "111" => out1 <= (others => '0');
+      when others => out1 <= (others => '0');
     end case;
   end process;
 end;

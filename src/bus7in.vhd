@@ -28,6 +28,7 @@ begin
       when "101" => out1 <= in6;
       when "110" => out1 <= in7;
       when "111" => out1 <= (others => '0');
+      when others => out1 <= (others => '0');
     end case;
   end process;
 end;

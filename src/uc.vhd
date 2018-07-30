@@ -110,6 +110,8 @@ begin
       when S11 => sNextState <= S12;
       when S12 => sNextState <= S13;
       when S13 => sNextState <= S0;
+
+      when others => sNextState <= S0;
     end case;
   end process;
 
