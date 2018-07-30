@@ -59,7 +59,7 @@ architecture unitControl of unitControl is
   signal sCurrentStateEprom: STD_LOGIC_VECTOR(3 downto 0);
 
 begin
-  eprom: eprom port map(
+  eprom1: eprom port map(
     sCurrentStateEprom,
     start, sc,
     b1, b2, b3, b4, b5, b6, b7, b8, b9, b10,
