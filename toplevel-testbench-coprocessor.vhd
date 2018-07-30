@@ -19,7 +19,7 @@ architecture testbenchCoprocessor of testbenchCoprocessor is
     );
   end component;
 
-  signal sResult: STD_LOGIC_VECTOR(31 downto 0);
+  signal sResult: STD_LOGIC_VECTOR(15 downto 0);
   signal sClock: STD_LOGIC;
   signal sStart: STD_LOGIC;
   signal sReset: STD_LOGIC;
@@ -57,10 +57,12 @@ begin
   end process;
 
   process (sClock) begin
-    if(rising_edge(sClock) and sDone = '1') then
-      report "NO ERRORS: Simulation succeeded" severity failure;
-    else
-      report "Simulation failed" severity failure;
+    if(rising_edge(sClock)) then
+      if sDone = '1' then
+        report "NO ERRORS: Simulation succeeded" severity failure;
+      else
+        report "Simulation failed" severity failure;
+      end if;
     end if;
   end process;
 end;
