@@ -137,7 +137,7 @@ begin
   bus7: bus7in port map(
     sSubtractorOutput,
     "00000000001011010000000000000000",
-    '0000000000000000' & x,
+    "0000000000000000" & x,
     sAdderOutput,
     sMultiplierOutput,
     "00000000000001111000000000000000",
