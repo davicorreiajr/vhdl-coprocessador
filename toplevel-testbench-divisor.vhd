@@ -58,10 +58,10 @@ end divisor;
 architecture divisor of divisor is
   signal numerator_fixed: sfixed(19 downto -12);
   signal denominator_fixed: sfixed(19 downto -12);
-  signal sResult: sfixed(19 downto -12);
+  signal sResult: sfixed(32 downto -31);
 begin
   numerator_fixed <= to_sfixed(numerator, numerator_fixed);
   denominator_fixed <= to_sfixed(denominator, denominator_fixed);
   sResult <= numerator_fixed / denominator_fixed;
-  result <= to_slv(sResult(38 downto 7));
+  result <= to_slv(sResult(19 downto -12));
 end;
