@@ -14,10 +14,10 @@ end multiplier;
 architecture multiplier of multiplier is
   signal multiplier_fixed: sfixed(19 downto -12);
   signal multiplicand_fixed: sfixed(19 downto -12);
-  signal sResult: sfixed(19 downto -12);
+  signal sResult: sfixed(32 downto -31);
 begin
   multiplier_fixed <= to_sfixed(multiplier, multiplier_fixed);
   multiplicand_fixed <= to_sfixed(multiplicand, multiplicand_fixed);
   sResult <= multiplier_fixed * multiplicand_fixed;
-  result <= to_slv(sResult);
+  result <= to_slv(sResult(19 downto -12));
 end;
