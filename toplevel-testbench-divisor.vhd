@@ -32,7 +32,7 @@ begin
   process(clk) begin
     if(rising_edge(clk)) then
       if(
-        sResult = "00000000000000000011010000000000"
+        sResult = "00000000000001001100011000111000"
       ) then
         report "NO ERRORS: Simulation succeeded" severity failure;
       else
