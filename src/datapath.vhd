@@ -28,7 +28,7 @@ end datapath;
 
 architecture datapath of datapath is
 
-  component register
+  component regs
     port(
       clock, enable, clear: in STD_LOGIC;
       in1: in STD_LOGIC_VECTOR(31 downto 0);
@@ -169,27 +169,27 @@ begin
     sBus10Out
   );
 
-  register1: register port map(
+  register1: regs port map(
     clock, enableR1, reset,
     sBus7Out, sRegisterOut1
   );
 
-  register2: register port map(
+  register2: regs port map(
     clock, enableR2, reset,
     sBus8Out, sRegisterOut2
   );
 
-  register3: register port map(
+  register3: regs port map(
     clock, enableR3, reset,
     sBus9Out, sRegisterOut3
   );
 
-  register4: register port map(
+  register4: regs port map(
     clock, enableR4, reset,
     sBus10Out, sRegisterOut4
   );
 
-  register5: register port map(
+  register5: regs port map(
     clock, enableR1, reset,
     sBus7Out, sRegisterOut5
   );

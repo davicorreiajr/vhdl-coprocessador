@@ -1,15 +1,15 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity register is
+entity regs is
   port(
     clock, enable, clear: in STD_LOGIC;
     in1: in STD_LOGIC_VECTOR(31 downto 0);
     out1: out STD_LOGIC_VECTOR(31 downto 0)
   );
-end register;
+end regs;
 
-architecture register of register is
+architecture regs of regs is
 begin
   process(clock, enable, clear)
   begin
