@@ -130,8 +130,6 @@ architecture datapath of datapath is
   signal sRegisterOut4: STD_LOGIC_VECTOR(31 downto 0);
   signal sRegisterOut5: STD_LOGIC_VECTOR(31 downto 0);
 
-  signal sR: STD_LOGIC_VECTOR(31 downto 0);
-
 begin
 
   bus7: bus7in port map(
@@ -264,5 +262,5 @@ begin
     sDivisorOutput
   );
 
-  sR <= sRegisterOut1;
+  r <= sRegisterOut1;
 end;
