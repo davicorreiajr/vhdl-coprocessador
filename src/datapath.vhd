@@ -40,7 +40,7 @@ architecture datapath of datapath is
     port(
       in1: in STD_LOGIC_VECTOR(31 downto 0);
       in2: in STD_LOGIC_VECTOR(31 downto 0);
-      control: out STD_LOGIC;
+      control: in STD_LOGIC;
       out1: out STD_LOGIC_VECTOR(31 downto 0)
     );
   end component;
@@ -50,7 +50,7 @@ architecture datapath of datapath is
       in1: in STD_LOGIC_VECTOR(31 downto 0);
       in2: in STD_LOGIC_VECTOR(31 downto 0);
       in3: in STD_LOGIC_VECTOR(31 downto 0);
-      control: out STD_LOGIC_VECTOR(1 downto 0);
+      control: in STD_LOGIC_VECTOR(1 downto 0);
       out1: out STD_LOGIC_VECTOR(31 downto 0)
     );
   end component;
@@ -61,7 +61,7 @@ architecture datapath of datapath is
       in2: in STD_LOGIC_VECTOR(31 downto 0);
       in3: in STD_LOGIC_VECTOR(31 downto 0);
       in4: in STD_LOGIC_VECTOR(31 downto 0);
-      control: out STD_LOGIC_VECTOR(1 downto 0);
+      control: in STD_LOGIC_VECTOR(1 downto 0);
       out1: out STD_LOGIC_VECTOR(31 downto 0)
     );
   end component;
@@ -75,7 +75,7 @@ architecture datapath of datapath is
       in5: in STD_LOGIC_VECTOR(31 downto 0);
       in6: in STD_LOGIC_VECTOR(31 downto 0);
       in7: in STD_LOGIC_VECTOR(31 downto 0);
-      control: out STD_LOGIC_VECTOR(2 downto 0);
+      control: in STD_LOGIC_VECTOR(2 downto 0);
       out1: out STD_LOGIC_VECTOR(31 downto 0)
     );
   end component;
