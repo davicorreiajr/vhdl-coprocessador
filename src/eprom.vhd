@@ -314,7 +314,7 @@ begin
         enableR4 <= '0';
         enableR5 <= '0';
         enableR <= '0';
-        done <= '0';
+        done <= '1';
 
       when others =>
         b1 <= "00";
