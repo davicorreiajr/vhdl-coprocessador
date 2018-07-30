@@ -78,7 +78,7 @@ begin
 
   end process;
 
-  process (start, sc)
+  process (start, sc, sCurrentState)
   begin
 
     case sCurrentState is
