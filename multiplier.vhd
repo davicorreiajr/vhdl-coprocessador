@@ -1,7 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
-library ieee_proposed;
-use ieee_proposed.fixed_pkg.all;
+use ieee.numeric_std.all;
+use work.fixed_float_types.all;
+use work.fixed_pkg.all;
 
 entity multiplier is
   port (
