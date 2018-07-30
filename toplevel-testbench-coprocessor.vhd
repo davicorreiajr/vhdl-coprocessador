@@ -25,7 +25,8 @@ architecture testbenchCoprocessor of testbenchCoprocessor is
       debugBus7: out STD_LOGIC_VECTOR(31 downto 0);
       debugBus8: out STD_LOGIC_VECTOR(31 downto 0);
       debugBus9: out STD_LOGIC_VECTOR(31 downto 0);
-      debugBus10: out STD_LOGIC_VECTOR(31 downto 0)
+      debugBus10: out STD_LOGIC_VECTOR(31 downto 0);
+      debugState: STD_LOGIC_VECTOR(3 downto 0)
     );
   end component;
 
@@ -45,6 +46,8 @@ architecture testbenchCoprocessor of testbenchCoprocessor is
   signal sDebugBus8: STD_LOGIC_VECTOR(31 downto 0);
   signal sDebugBus9: STD_LOGIC_VECTOR(31 downto 0);
   signal sDebugBus10: STD_LOGIC_VECTOR(31 downto 0);
+
+  signal sDebugState: STD_LOGIC_VECTOR(3 downto 0);
 begin
 
   coprocessor1: coprocessor port map(
@@ -100,7 +103,8 @@ begin
         sDebugBus7 = "0000000000000000" and
         sDebugBus8 = "0000000000000000" and
         sDebugBus9 = "0000000000000000" and
-        sDebugBus10 = "0000000000000000"
+        sDebugBus10 = "0000000000000000" and
+        sDebugState = "0000"
       ) then
         report "NO ERRORS: Simulation succeeded" severity failure;
       else
@@ -131,7 +135,8 @@ entity coprocessor is
     debugBus7: out STD_LOGIC_VECTOR(31 downto 0);
     debugBus8: out STD_LOGIC_VECTOR(31 downto 0);
     debugBus9: out STD_LOGIC_VECTOR(31 downto 0);
-    debugBus10: out STD_LOGIC_VECTOR(31 downto 0)
+    debugBus10: out STD_LOGIC_VECTOR(31 downto 0);
+    debugState: STD_LOGIC_VECTOR(3 downto 0)
   );
 end coprocessor;
 
@@ -159,7 +164,8 @@ architecture coprocessor of coprocessor is
       enableR4: out STD_LOGIC;
       enableR5: out STD_LOGIC;
       enableR: out STD_LOGIC;
-      done: out STD_LOGIC
+      done: out STD_LOGIC;
+      debugState: out STD_LOGIC_VECTOR(3 downto 0)
     );
   end component;
 
@@ -229,13 +235,14 @@ architecture coprocessor of coprocessor is
   signal sDebugBus8: STD_LOGIC_VECTOR(31 downto 0);
   signal sDebugBus9: STD_LOGIC_VECTOR(31 downto 0);
   signal sDebugBus10: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugState: STD_LOGIC_VECTOR(3 downto 0);
 begin
 
   uc1: unitControl port map(
     start, reset, clock, sc,
     sB1, sB2, sB3, sB4, sB5, sB6, sB7, sB8, sB9, sB10,
     sEnableR1, sEnableR2, sEnableR3, sEnableR4, sEnableR5, sEnableR,
-    sDone
+    sDone, sDebugState
   );
 
   datapath1: datapath port map(
@@ -268,6 +275,7 @@ begin
   debugBus8 <= sDebugBus8;
   debugBus9 <= sDebugBus9;
   debugBus10 <= sDebugBus10;
+  debugState <= sDebugState;
 end;
 
 library IEEE;
@@ -295,7 +303,8 @@ entity unitControl is
     enableR4: out STD_LOGIC;
     enableR5: out STD_LOGIC;
     enableR: out STD_LOGIC;
-    done: out STD_LOGIC
+    done: out STD_LOGIC;
+    debugState: out STD_LOGIC_VECTOR(3 downto 0)
   );
 end unitControl;
 
@@ -386,6 +395,8 @@ begin
       when others => sNextState <= S0;
     end case;
   end process;
+
+  debugState <= sCurrentStateEprom;
 
   with sCurrentState select
     sCurrentStateEprom <=
