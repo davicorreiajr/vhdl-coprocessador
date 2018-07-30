@@ -134,12 +134,12 @@ begin
 
   bus7: bus7in port map(
     sSubtractorOutput,
-    720,
+    "00000000001011010000000000000000",
     x,
     sAdderOutput,
     sMultiplierOutput,
-    120,
-    24,
+    "00000000000001111000000000000000",
+    "00000000000000011000000000000000",
     b7,
     sBus7Out
   );
@@ -148,7 +148,7 @@ begin
     sDivisorOutput,
     sSubtractorOutput,
     sMultiplierOutput,
-    2,
+    "00000000000000000010000000000000",
     b8,
     sBus8Out
   );
@@ -162,9 +162,9 @@ begin
 
   bus10: bus4in port map(
     sMultiplierOutput,
-    6,
-    1,
-    5040,
+    "00000000000000001010000000000000",
+    "00000000000000000001000000000000",
+    "00000001001110110000000000000000",
     b10,
     sBus10Out
   );
