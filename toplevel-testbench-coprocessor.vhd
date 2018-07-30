@@ -64,7 +64,8 @@ begin
     sDebugBus7,
     sDebugBus8,
     sDebugBus9,
-    sDebugBus10
+    sDebugBus10,
+    sDebugState
   );
 
   process begin
