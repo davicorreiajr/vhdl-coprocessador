@@ -70,7 +70,7 @@ begin
 
   coprocessor1: coprocessor port map(
     "0000100001100000",
-    '1',
+    '0',
     sStart, sReset, sClock,
     sResult, sDone,
     sDebugBus1,
