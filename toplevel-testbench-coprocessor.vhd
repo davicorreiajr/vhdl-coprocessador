@@ -26,6 +26,15 @@ architecture testbenchCoprocessor of testbenchCoprocessor is
       debugBus8: out STD_LOGIC_VECTOR(31 downto 0);
       debugBus9: out STD_LOGIC_VECTOR(31 downto 0);
       debugBus10: out STD_LOGIC_VECTOR(31 downto 0);
+      debugR1: out STD_LOGIC_VECTOR(31 downto 0);
+      debugR2: out STD_LOGIC_VECTOR(31 downto 0);
+      debugR3: out STD_LOGIC_VECTOR(31 downto 0);
+      debugR4: out STD_LOGIC_VECTOR(31 downto 0);
+      debugR5: out STD_LOGIC_VECTOR(31 downto 0);
+      debugMultiplier: out STD_LOGIC_VECTOR(31 downto 0);
+      debugDivisor: out STD_LOGIC_VECTOR(31 downto 0);
+      debugSubtractor: out STD_LOGIC_VECTOR(31 downto 0);
+      debugAdder: out STD_LOGIC_VECTOR(31 downto 0);
       debugState: out STD_LOGIC_VECTOR(3 downto 0)
     );
   end component;
@@ -46,13 +55,22 @@ architecture testbenchCoprocessor of testbenchCoprocessor is
   signal sDebugBus8: STD_LOGIC_VECTOR(31 downto 0);
   signal sDebugBus9: STD_LOGIC_VECTOR(31 downto 0);
   signal sDebugBus10: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugR1: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugR2: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugR3: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugR4: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugR5: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugMultiplier: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugDivisor: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugSubtractor: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugAdder: STD_LOGIC_VECTOR(31 downto 0);
 
   signal sDebugState: STD_LOGIC_VECTOR(3 downto 0);
 begin
 
   coprocessor1: coprocessor port map(
-    "0000000000000000",
-    '0',
+    "0000100001100000",
+    '1',
     sStart, sReset, sClock,
     sResult, sDone,
     sDebugBus1,
@@ -65,6 +83,15 @@ begin
     sDebugBus8,
     sDebugBus9,
     sDebugBus10,
+    sDebugR1,
+    sDebugR2,
+    sDebugR3,
+    sDebugR4,
+    sDebugR5,
+    sDebugMultiplier,
+    sDebugDivisor,
+    sDebugSubtractor,
+    sDebugAdder,
     sDebugState
   );
 
@@ -94,18 +121,7 @@ begin
   process (sClock) begin
     if(rising_edge(sClock) and sDone = '1') then
       if (
-        sResult = "0000000000000000" and
-        sDebugBus1 = "0000000000000000" and
-        sDebugBus2 = "0000000000000000" and
-        sDebugBus3 = "0000000000000000" and
-        sDebugBus4 = "0000000000000000" and
-        sDebugBus5 = "0000000000000000" and
-        sDebugBus6 = "0000000000000000" and
-        sDebugBus7 = "0000000000000000" and
-        sDebugBus8 = "0000000000000000" and
-        sDebugBus9 = "0000000000000000" and
-        sDebugBus10 = "0000000000000000" and
-        sDebugState = "0000"
+        sResult = "0000010000100011"
       ) then
         report "NO ERRORS: Simulation succeeded" severity failure;
       else
@@ -137,6 +153,15 @@ entity coprocessor is
     debugBus8: out STD_LOGIC_VECTOR(31 downto 0);
     debugBus9: out STD_LOGIC_VECTOR(31 downto 0);
     debugBus10: out STD_LOGIC_VECTOR(31 downto 0);
+    debugR1: out STD_LOGIC_VECTOR(31 downto 0);
+    debugR2: out STD_LOGIC_VECTOR(31 downto 0);
+    debugR3: out STD_LOGIC_VECTOR(31 downto 0);
+    debugR4: out STD_LOGIC_VECTOR(31 downto 0);
+    debugR5: out STD_LOGIC_VECTOR(31 downto 0);
+    debugMultiplier: out STD_LOGIC_VECTOR(31 downto 0);
+    debugDivisor: out STD_LOGIC_VECTOR(31 downto 0);
+    debugSubtractor: out STD_LOGIC_VECTOR(31 downto 0);
+    debugAdder: out STD_LOGIC_VECTOR(31 downto 0);
     debugState: out STD_LOGIC_VECTOR(3 downto 0)
   );
 end coprocessor;
@@ -201,7 +226,16 @@ architecture coprocessor of coprocessor is
       debugBus7: out STD_LOGIC_VECTOR(31 downto 0);
       debugBus8: out STD_LOGIC_VECTOR(31 downto 0);
       debugBus9: out STD_LOGIC_VECTOR(31 downto 0);
-      debugBus10: out STD_LOGIC_VECTOR(31 downto 0)
+      debugBus10: out STD_LOGIC_VECTOR(31 downto 0);
+      debugR1: out STD_LOGIC_VECTOR(31 downto 0);
+      debugR2: out STD_LOGIC_VECTOR(31 downto 0);
+      debugR3: out STD_LOGIC_VECTOR(31 downto 0);
+      debugR4: out STD_LOGIC_VECTOR(31 downto 0);
+      debugR5: out STD_LOGIC_VECTOR(31 downto 0);
+      debugMultiplier: out STD_LOGIC_VECTOR(31 downto 0);
+      debugDivisor: out STD_LOGIC_VECTOR(31 downto 0);
+      debugSubtractor: out STD_LOGIC_VECTOR(31 downto 0);
+      debugAdder: out STD_LOGIC_VECTOR(31 downto 0)
     );
   end component;
 
@@ -236,6 +270,15 @@ architecture coprocessor of coprocessor is
   signal sDebugBus8: STD_LOGIC_VECTOR(31 downto 0);
   signal sDebugBus9: STD_LOGIC_VECTOR(31 downto 0);
   signal sDebugBus10: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugR1: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugR2: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugR3: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugR4: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugR5: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugMultiplier: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugDivisor: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugSubtractor: STD_LOGIC_VECTOR(31 downto 0);
+  signal sDebugAdder: STD_LOGIC_VECTOR(31 downto 0);
   signal sDebugState: STD_LOGIC_VECTOR(3 downto 0);
 begin
 
@@ -260,7 +303,16 @@ begin
     sDebugBus7,
     sDebugBus8,
     sDebugBus9,
-    sDebugBus10
+    sDebugBus10,
+    sDebugR1,
+    sDebugR2,
+    sDebugR3,
+    sDebugR4,
+    sDebugR5,
+    sDebugMultiplier,
+    sDebugDivisor,
+    sDebugSubtractor,
+    sDebugAdder
   );
 
   done <= sDone;
@@ -276,6 +328,15 @@ begin
   debugBus8 <= sDebugBus8;
   debugBus9 <= sDebugBus9;
   debugBus10 <= sDebugBus10;
+  debugR1 <= sDebugR1;
+  debugR2 <= sDebugR2;
+  debugR3 <= sDebugR3;
+  debugR4 <= sDebugR4;
+  debugR5 <= sDebugR5;
+  debugMultiplier <=  sDebugMultiplier;
+  debugDivisor <=  sDebugDivisor;
+  debugSubtractor <=  sDebugSubtractor;
+  debugAdder <=  sDebugAdder;
   debugState <= sDebugState;
 end;
 
@@ -452,7 +513,16 @@ entity datapath is
     debugBus7: out STD_LOGIC_VECTOR(31 downto 0);
     debugBus8: out STD_LOGIC_VECTOR(31 downto 0);
     debugBus9: out STD_LOGIC_VECTOR(31 downto 0);
-    debugBus10: out STD_LOGIC_VECTOR(31 downto 0)
+    debugBus10: out STD_LOGIC_VECTOR(31 downto 0);
+    debugR1: out STD_LOGIC_VECTOR(31 downto 0);
+    debugR2: out STD_LOGIC_VECTOR(31 downto 0);
+    debugR3: out STD_LOGIC_VECTOR(31 downto 0);
+    debugR4: out STD_LOGIC_VECTOR(31 downto 0);
+    debugR5: out STD_LOGIC_VECTOR(31 downto 0);
+    debugMultiplier: out STD_LOGIC_VECTOR(31 downto 0);
+    debugDivisor: out STD_LOGIC_VECTOR(31 downto 0);
+    debugSubtractor: out STD_LOGIC_VECTOR(31 downto 0);
+    debugAdder: out STD_LOGIC_VECTOR(31 downto 0)
   );
 end datapath;
 
@@ -620,7 +690,7 @@ begin
   );
 
   register5: regs port map(
-    clock, enableR1, reset,
+    clock, enableR5, reset,
     sBus7Out, sRegisterOut5
   );
 
@@ -703,6 +773,15 @@ begin
   debugBus8 <= sBus8Out;
   debugBus9 <= sBus9Out;
   debugBus10 <= sBus10Out;
+  debugR1 <= sRegisterOut1;
+  debugR2 <= sRegisterOut2;
+  debugR3 <= sRegisterOut3;
+  debugR4 <= sRegisterOut4;
+  debugR5 <= sRegisterOut5;
+  debugMultiplier <= sMultiplierOutput;
+  debugDivisor <= sDivisorOutput;
+  debugSubtractor <= sSubtractorOutput;
+  debugAdder <= sAdderOutput;
 end;
 
 library IEEE;
