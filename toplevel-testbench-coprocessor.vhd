@@ -69,8 +69,8 @@ architecture testbenchCoprocessor of testbenchCoprocessor is
 begin
 
   coprocessor1: coprocessor port map(
-    "0000100001100000",
-    '0',
+    "0001100100100010",
+    '1',
     sStart, sReset, sClock,
     sResult, sDone,
     sDebugBus1,
@@ -662,7 +662,7 @@ begin
 
   bus10: bus4in port map(
     sMultiplierOutput,
-    "00000000000000001010000000000000",
+    "00000000000000000110000000000000",
     "00000000000000000001000000000000",
     "00000001001110110000000000000000",
     b10,
@@ -1294,7 +1294,7 @@ end multiplier;
 architecture multiplier of multiplier is
   signal multiplier_fixed: sfixed(19 downto -12);
   signal multiplicand_fixed: sfixed(19 downto -12);
-  signal sResult: sfixed(32 downto -31);
+  signal sResult: sfixed(39 downto -24);
 begin
   multiplier_fixed <= to_sfixed(multiplier, multiplier_fixed);
   multiplicand_fixed <= to_sfixed(multiplicand, multiplicand_fixed);
