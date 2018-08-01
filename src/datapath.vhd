@@ -190,7 +190,7 @@ begin
   );
 
   register5: regs port map(
-    clock, enableR1, reset,
+    clock, enableR5, reset,
     sBus7Out, sRegisterOut5
   );
 
