@@ -10,5 +10,5 @@ end;
 
 architecture signext of signext is
 begin
-  y <= X"ffff" & a when a(15) else X"0000" & a; 
+  y <= "1111111111111111" & a when a(15) = '1' else "0000000000000000" & a; 
 end;
