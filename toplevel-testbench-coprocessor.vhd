@@ -528,6 +528,13 @@ end datapath;
 
 architecture datapath of datapath is
 
+  component signext
+    port(
+      a: in  STD_LOGIC_VECTOR(15 downto 0);
+      y: out STD_LOGIC_VECTOR(31 downto 0)
+    );
+  end component;
+  
   component regs
     port(
       clock, enable, clear: in STD_LOGIC;
@@ -630,12 +637,18 @@ architecture datapath of datapath is
   signal sRegisterOut4: STD_LOGIC_VECTOR(31 downto 0);
   signal sRegisterOut5: STD_LOGIC_VECTOR(31 downto 0);
 
+  signal sSignext: STD_LOGIC_VECTOR(31 downto 0);
+
 begin
+
+  signext1: signext port map(
+    x, sSignext
+  );
 
   bus7: bus7in port map(
     sSubtractorOutput,
     "00000000001011010000000000000000",
-    "0000000000000000" & x,
+    sSignext,
     sAdderOutput,
     sMultiplierOutput,
     "00000000000001111000000000000000",
@@ -1341,4 +1354,19 @@ end;
 architecture subtractor of subtractor is
 begin
   y <= a + not b + '1';
+end;
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+entity signext is -- sign extender
+  port(
+    a: in  STD_LOGIC_VECTOR(15 downto 0);
+    y: out STD_LOGIC_VECTOR(31 downto 0)
+  );
+end;
+
+architecture signext of signext is
+begin
+  y <= X"ffff" & a when a(15) else X"0000" & a; 
 end;
