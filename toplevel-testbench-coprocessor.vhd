@@ -1,3 +1,9 @@
+-- Main file for testing the implemented coprocessor.
+-- All modules are in this single file, to ease the project setup on Vivado.
+-- Also, we kept several signals from buses and registers for debugging
+-- purposes.
+-- The values used on this test
+
 library IEEE; 
 use IEEE.STD_LOGIC_1164.all;
 use IEEE.NUMERIC_STD_UNSIGNED.all;
@@ -1368,5 +1374,5 @@ end;
 
 architecture signext of signext is
 begin
-  y <= X"ffff" & a when a(15) else X"0000" & a; 
+  y <= "1111111111111111" & a when a(15) = '1' else "0000000000000000" & a; 
 end;
