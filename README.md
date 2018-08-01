@@ -1,6 +1,9 @@
 # vhdl-coprocessador
 Projeto de Organização e Arquitetura de Computadores 2 - implementação de um coprocessador de sin/cos
 
+## Organização dos arquivos
+A pasta `src` contém a implementação de cada um dos módulos do coprocessador. Fora desta pasta, são encontrados os testbenches, destacando-se o `toplevel-testbench-coprocessor.vhd`, que contém todos os módulos em único arquivo (o que facilita sua execução no Vivado) e os testes (como comentário).
+
 ## Detalhes
 O coprocessador aceita como entrada (e também devolve como saída) 16 bits, sendo 4 para parte inteira e 12 para decimal. Internamente, ele trabalha com uma quantia maior de bits, a fim de garantir precisão: 32 bits, sendo 20 para parte inteira e 12 para decimal.
 
@@ -18,4 +21,4 @@ Para adicioná-las vá na parte "Sources" -> "Library", clique com o botão dire
 
 Após isso, você deve encontrar o arquivo do coprocessador e as bibliotecas adicionadas em "Sources" -> "Libraries" na pasta "Design Sources/VHDL/xil_defaultlib". Agora precisamos mudar o tipo de todos os arquivos para "VHDL 2008" e a biblioteca para "work", isso pode ser feito em "Properties". Após isso, o arquivo do coprocessador e as libs adicionadas devem estar na pasta "Design Sources/VHDL 2008/work".
 
-Após isso, basta rodar a síntese do projeto (Run Synthesis) e após isso, rodar a simulação (Run Simulation)
+Após isso, basta rodar a síntese do projeto (Run Synthesis) e após isso, rodar a simulação (Run Simulation), com o arquivo `toplevel-testbench-coprocessor.vhd`.
