@@ -69,7 +69,7 @@ architecture testbenchCoprocessor of testbenchCoprocessor is
 begin
 
   coprocessor1: coprocessor port map(
-    "0001100100100010",
+    "1111011110100000",
     '1',
     sStart, sReset, sClock,
     sResult, sDone,
@@ -1368,5 +1368,5 @@ end;
 
 architecture signext of signext is
 begin
-  y <= X"ffff" & a when a(15) else X"0000" & a; 
+  y <= "1111111111111111" & a when a(15) = '1' else "0000000000000000" & a;
 end;

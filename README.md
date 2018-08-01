@@ -7,7 +7,7 @@ O coprocessador aceita como entrada (e também devolve como saída) 16 bits, sen
 ## Como simular o projeto no vivado
 Para testarmos o código e rodar as simulações utilizamos a versão 2018.2 do Vivado
 
-Inicialmente precisamos criamos um projeto no Vivado. Criamos um projeto do tipo "RTL Project", adicionamos o arquivo "INSERIR ARQUIVO FINAL AQUI!!!!!!!!!" e colocamos "Target language" e "Simulator Language" como "VHDL". A placa usada foi a "xc7a100tcsg324-3".
+Inicialmente precisamos criamos um projeto no Vivado. Criamos um projeto do tipo "RTL Project", adicionamos o arquivo "toplevel-testbench-coprocessor.vhd" e colocamos "Target language" e "Simulator Language" como "VHDL". A placa usada foi a "xc7a100tcsg324-3".
 
 Para rodarmos o projeto, precisamos adicionar algumas bibliotecas manualmente ao Vivado:
 ```
